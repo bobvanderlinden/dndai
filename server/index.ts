@@ -1,6 +1,6 @@
 import "https://deno.land/x/dotenv/load.ts";
 
-console.log(Deno.version);
+throw new Error("Deno.version:", JSON.stringify(Deno.version));
 
 import { Application, Router } from "./deps/oak.ts";
 import { middleware as clientMiddleware } from "./client.ts";
