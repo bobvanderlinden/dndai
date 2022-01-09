@@ -14,6 +14,8 @@ import { complete } from "./openai.ts";
 const APP_HOST = "localhost";
 const APP_PORT = 3000;
 
+console.log(Deno.version);
+
 const app = new Application();
 
 const router = new Router();
