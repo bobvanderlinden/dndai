@@ -137,13 +137,25 @@ router.get("/ws/room/:roomId", async (ctx) => {
 
         room.working = true;
         broadcastMessage({ type: "working" });
+        const prompt =
+          room.events
+            .slice(-10)
+            .map((event) =>
+              event.type === "story"
+                ? `The story continues as follows: ${event.text}`
+                : event.type === "user-action"
+                ? event.action.type === "do"
+                  ? `${event.user} does the following: ${event.action.text}`
+                  : event.action.type === "say"
+                  ? `${event.user} says the following: ${event.action.text}`
+                  : undefined
+                : undefined
+            )
+            .filter(Boolean)
+            .join("\n") + `\nThe story continues as follows:`;
+        console.log(prompt);
         const result = await complete({
-          prompt:
-            room.events
-              .slice(-10)
-              .map((line) => `* ${line}`)
-              .join("\n") +
-            `\n\nWhat happened next can be described in around 20 words:`,
+          prompt,
           max_tokens: 50,
         });
         pushEvent({ type: "story", text: result.choices[0].text });
