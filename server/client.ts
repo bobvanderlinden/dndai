@@ -38,7 +38,7 @@ const builder = new Esbuilder({
 });
 
 async function watchBuild() {
-  await ensureDir(cacheDir);
+  // await ensureDir(cacheDir);
 
   for await (const [result] of builder.on("result")) {
     files = result.outputFiles.reduce((root, file) => {
