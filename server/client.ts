@@ -38,6 +38,9 @@ const builder = new Esbuilder({
 });
 
 async function watchBuild() {
+  if (!Deno.env.get("HOME")) {
+    Deno.env.set("HOME", path.join(Deno.cwd(), ".home"));
+  }
   await ensureDir(cacheDir);
 
   for await (const [result] of builder.on("result")) {
