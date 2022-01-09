@@ -1,4 +1,7 @@
 import "https://deno.land/x/dotenv/load.ts";
+
+console.log(Deno.version);
+
 import { Application, Router } from "./deps/oak.ts";
 import { middleware as clientMiddleware } from "./client.ts";
 import { IoSocket } from "../common/io-socket.ts";
@@ -13,8 +16,6 @@ import { serverMessage, ServerMessage } from "../common/server-message.ts";
 import { complete } from "./openai.ts";
 const APP_HOST = "localhost";
 const APP_PORT = 3000;
-
-console.log(Deno.version);
 
 const app = new Application();
 
