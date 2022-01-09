@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, DependencyList } from "react";
+import { useEffect, useRef, useState, DependencyList } from "./deps/react.ts";
 import { IoSocket } from "../common/io-socket.ts";
 
 export enum WebSocketReadyState {

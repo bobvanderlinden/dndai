@@ -1,4 +1,4 @@
-import * as event from "event";
+import * as event from "./deps/event.ts";
 import { Schema } from "./schema.ts";
 
 export class IoSocket<

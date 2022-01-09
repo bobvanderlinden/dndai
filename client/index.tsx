@@ -1,12 +1,12 @@
-import React, { useReducer, useEffect } from "react";
-import ReactDOM from "react-dom";
-import { useForm } from "react-hook-form";
+import React, { useReducer, useEffect } from "./deps/react.ts";
+import ReactDOM from "./deps/react-dom.ts";
+import { useForm } from "./deps/react-hook-form.ts";
 import {
   Router,
   RouteComponentProps,
   useParams,
   useLocation,
-} from "@reach/router";
+} from "./deps/@reach/router.ts";
 import { useIoSocket, WebSocketReadyState } from "./use-iosocket.ts";
 import { ServerMessage, serverMessage } from "../common/server-message.ts";
 import { ClientMessage, clientMessage } from "../common/client-message.ts";

@@ -1,5 +1,5 @@
-import * as esbuild from "esbuild";
-import * as event from "event";
+import * as esbuild from "./deps/esbuild.ts";
+import * as event from "./deps/event.ts";
 
 type BuildResult = esbuild.BuildResult & {
   outputFiles: esbuild.OutputFile[];

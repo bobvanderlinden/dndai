@@ -1,7 +1,7 @@
-import { Middleware, Status, Context } from "oak";
+import { Middleware, Status, Context } from "./deps/oak.ts";
 import { Esbuilder } from "./esbuilder.ts";
-import { cache } from "esbuild-plugin-cache";
-import * as path from "path";
+import { cache } from "./deps/esbuild-plugin-cache.ts";
+import * as path from "./deps/path.ts";
 
 const __dirname = path.dirname(path.fromFileUrl(import.meta.url));
 const projectRoot = path.dirname(__dirname);
@@ -29,9 +29,9 @@ const builder = new Esbuilder({
   plugins: [
     cache({
       directory: cacheDir,
-      importmap: JSON.parse(
-        await Deno.readTextFile(path.join(projectRoot, "import-map.json"))
-      ),
+      importmap: {
+        imports: {},
+      },
     }),
   ],
 });

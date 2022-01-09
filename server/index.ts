@@ -1,5 +1,5 @@
 import "https://deno.land/x/dotenv/load.ts";
-import { Application, Router } from "oak";
+import { Application, Router } from "./deps/oak.ts";
 import { middleware as clientMiddleware } from "./client.ts";
 import { IoSocket } from "../common/io-socket.ts";
 import * as json from "../common/json.ts";
