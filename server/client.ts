@@ -2,7 +2,6 @@ import { Middleware, Status, Context } from "./deps/oak.ts";
 import { Esbuilder } from "./esbuilder.ts";
 import { cache } from "./deps/esbuild-plugin-cache.ts";
 import * as path from "./deps/path.ts";
-import { ensureDir } from "./deps/fs.ts";
 
 const __dirname = path.dirname(path.fromFileUrl(import.meta.url));
 const projectRoot = path.dirname(__dirname);
@@ -38,10 +37,7 @@ const builder = new Esbuilder({
 });
 
 async function watchBuild() {
-  if (!Deno.env.get("HOME")) {
-    Deno.env.set("HOME", path.join(Deno.cwd(), ".home"));
-  }
-  await ensureDir(cacheDir);
+  // await ensureDir(cacheDir);
 
   for await (const [result] of builder.on("result")) {
     files = result.outputFiles.reduce((root, file) => {
