@@ -2,7 +2,6 @@ import { Middleware, Status, Context } from "./deps/oak.ts";
 import { Esbuilder } from "./esbuilder.ts";
 import { cache } from "./deps/esbuild-plugin-cache.ts";
 import * as path from "./deps/path.ts";
-import { ensureDir } from "./deps/fs.ts";
 
 const __dirname = path.dirname(path.fromFileUrl(import.meta.url));
 const projectRoot = path.dirname(__dirname);
